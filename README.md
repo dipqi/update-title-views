@@ -15,10 +15,10 @@ Buka file update-judul-views.py (kalo blm download, didownload dulu)
 ### Cara Ke-Empat
 Install "pip" & "python 3", caranya cari ae di google. gw lagi di hp bg, mager.
 run command ini kalo udah install pip & python 3
-
-> pip install google-auth-oauthlib
-> pip install google-api-python-client
-
+```
+pip install google-auth-oauthlib
+pip install google-api-python-client
+```
 ### Cara ke-Lima
 di command prompt / terminal kamu, jalankan
 > python3 update-judul-views.py
