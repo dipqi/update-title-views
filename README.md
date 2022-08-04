@@ -26,5 +26,5 @@ di command prompt / terminal kamu, jalankan
 ### Cara ke-Enam: 
 Autentikasi, copy link yang dikasih di cmd/terminal pas run codenya, dan paste token yang diberi pas udah authenticate di cmd/terminal kamu.
 
-** dah gitu aje, kalo ga ada error berarti udah work. **
-** oiya, kalo biar terus keupdate, gw saranin pake crontab. **
+**dah gitu aje, kalo ga ada error berarti udah work.**
+**oiya, kalo biar terus keupdate, gw saranin pake crontab.**
