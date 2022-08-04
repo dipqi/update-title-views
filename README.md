@@ -21,8 +21,9 @@ pip install google-api-python-client
 ```
 ### Cara ke-Lima
 di command prompt / terminal kamu, jalankan
-> python3 update-judul-views.py
-
+```
+python3 update-judul-views.py
+```
 ### Cara ke-Enam: 
 Autentikasi, copy link yang dikasih di cmd/terminal pas run codenya, dan paste token yang diberi pas udah authenticate di cmd/terminal kamu.
 
