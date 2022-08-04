@@ -35,7 +35,7 @@ def main():
 
         req = yt.videos().list(
             part="snippet,statistics",
-            id="YqKVKQOYu6Y"
+            id="YqKVKQOYu6Y" #ganti url youtube kamu (dibagian watch?v=(yang ini))
             )
         response = req.execute();
         data = response["items"][0];
@@ -51,7 +51,7 @@ def main():
         req = yt.videos().update(
                 part="snippet",
                 body={
-                    "id": "YqKVKQOYu6Y",
+                    "id": "YqKVKQOYu6Y", #ganti url youtube kamu (dibagian watch?v=(yang ini))
                     "snippet": snippet
                 }
         )
