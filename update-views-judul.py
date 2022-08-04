@@ -1,44 +1,60 @@
 import os
-import google_auth_oauthlib.flow #pip install --user google-auth-oauthlib
-import googleapiclient.discovery #pip install --user google-api-python-client
-import googleapiclient.errors
-import pprint
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
 
-#initialize permissions
-scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
-#to displau data
-pp = pprint.PrettyPrinter(indent=4)
+#scopes
+scopes = ["https://www.googleapis.com/auth/youtube.force-ssl"]
 
 
 def main():
-    #setup
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-    api_service_name = "youtube"
-    api_version = "v3"
-    client_secrets_file = "client_secret_883634937018-euknjgkgq1vk98mtr0djoqgk359oivvp.apps.googleusercontent.com.json"
+    client_secrets_file = "secret1.json" #oAuth
+    
+     
+    creds = None
+    if os.path.exists('token.json'):
+        creds = Credentials.from_authorized_user_file('token.json', scopes)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                client_secrets_file, scopes)
+            creds = flow.run_console()
+            
+        # Save the credentials for the next run
+        with open('token.json', 'w') as token:
+            token.write(creds.to_json())
 
-    # Get credentials and create an API client
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-        client_secrets_file, scopes)
-    credentials = flow.run_console()
-    youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, credentials=credentials)
 
-    # Request (This is what asks Youtube API for the video data)
-    request = youtube.videos().list(
-        part="snippet,statistics",
-        id="5qYZC56dneU"
-    )
-    response = request.execute()
+        yt = build('youtube', 'v3', credentials=creds) 
 
-    data = response["items"][0];
-    vid_snippet = data["snippet"];
+        req = yt.videos().list(
+            part="snippet,statistics",
+            id="YqKVKQOYu6Y"
+            )
+        response = req.execute();
+        data = response["items"][0];
+        snippet = data["snippet"];
+        title_sblm = snippet["title"];
 
-    title = vid_snippet["title"];
+        views = int(data["statistics"]["viewCount"]);
+        title_baru = f"Video ini telah ditonton {views:,} kali. Kok bisa ?" #new title
+        print(title_baru)
+        if(title_sblm != title_baru):
+            snippet["title"] = title_baru; 
 
-    views = str(data["viewCount"]);
+        req = yt.videos().update(
+                part="snippet",
+                body={
+                    "id": "YqKVKQOYu6Y",
+                    "snippet": snippet
+                }
+        )
+        response = req.execute();
 
-#run program
-if __name__ == "__main__":
-    main()
+main()
