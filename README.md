@@ -9,8 +9,8 @@ Download & Simpan file "secret-blablabla-googleauthapalahgitu.json" ditempat yan
 
 ### Cara Ketiga
 Buka file update-judul-views.py (kalo blm download, didownload dulu)
-* ganti client_secrets_file menjadi  "secret-blablabla-googleauthapalahgitu.json" (file oauth yang td kamu download n setup)
-* ganti "id" menjadi URL video kamu yang bakal jadi target ganti views. 
+ganti client_secrets_file menjadi  "secret-blablabla-googleauthapalahgitu.json" (file oauth yang td kamu download n setup)
+ganti "id" menjadi URL video kamu yang bakal jadi target ganti views. 
 
 ### Cara Ke-Empat
 Install "pip" & "python 3", caranya cari ae di google. gw lagi di hp bg, mager.
