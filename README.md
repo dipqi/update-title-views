@@ -2,7 +2,7 @@
 Based on unique title like Tom Scott &amp; Agung Hapsah's videos.
 
 ### Cara Pertama 
-Setup YouTube API, bisa dibuka link tersebut: https://developers.google.com/youtube/v3/quickstart/python \
+Setup YouTube API, bisa dibuka link tersebut: https://developers.google.com/youtube/v3/quickstart/python
 
 ### Cara Kedua
 Download & Simpan file "secret-blablabla-googleauthapalahgitu.json" ditempat yang bersamaan dengan file .py yang udah aku siapkan
